@@ -1,4 +1,4 @@
-/* RESET & BASE */
+/* ================= RESET & BASE ================= */
 * {
   margin: 0;
   padding: 0;
@@ -8,10 +8,10 @@
 
 body {
   scroll-behavior: smooth;
-  background: #000; /* fallback background */
+  background: #000; /* fallback */
 }
 
-/* NAVBAR */
+/* ================= NAVBAR ================= */
 nav {
   display: flex;
   justify-content: space-between;
@@ -45,7 +45,7 @@ nav a:hover {
   color: #00e0c6;
 }
 
-/* HOME */
+/* ================= HOME ================= */
 .home {
   height: 100vh;
   background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.7)),
@@ -77,7 +77,7 @@ nav a:hover {
   font-weight: bold;
 }
 
-/* BUTTON */
+/* ================= BUTTON ================= */
 .btn {
   display: inline-block;
   margin-top: 20px;
@@ -94,13 +94,13 @@ nav a:hover {
   background: white;
 }
 
-/* SECTION */
+/* ================= SECTIONS ================= */
 .section {
   padding: 100px 60px;
   text-align: center;
 }
 
-/* CARDS */
+/* ================= CARDS ================= */
 .cards {
   display: flex;
   justify-content: center;
@@ -123,12 +123,12 @@ nav a:hover {
   box-shadow: 0 15px 40px rgba(0,0,0,0.2);
 }
 
-/* CONTACT */
+/* ================= CONTACT ================= */
 .contact {
   background: #f4f4f4;
 }
 
-/* FOOTER */
+/* ================= FOOTER ================= */
 footer {
   background: #111;
   color: white;
@@ -136,24 +136,61 @@ footer {
   text-align: center;
 }
 
-/* WAVE SVG */
+/* ================= WAVE CONTAINER ================= */
 .wave-container {
   position: relative;
   width: 100%;
-  margin-top: -5px; /* adjust supaya tersambung dengan home */
+  margin-top: -5px;
   overflow: hidden;
   z-index: 10;
 }
 
+/* ================= MULTI-LAYER WAVE ================= */
 .wave-container svg {
-  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
   width: 100%;
-  animation: waveFloat 6s ease-in-out infinite;
+  height: auto;
 }
 
-/* WAVE FLOATING ANIMATION */
-@keyframes waveFloat {
+.wave-container svg path {
+  filter: drop-shadow(0 0 10px rgba(0,224,198,0.3));
+}
+
+/* Layer 1 */
+.wave1 {
+  animation: waveFloat1 6s ease-in-out infinite;
+  opacity: 1;
+}
+
+/* Layer 2 */
+.wave2 {
+  animation: waveFloat2 8s ease-in-out infinite;
+  opacity: 0.5;
+}
+
+/* Layer 3 */
+.wave3 {
+  animation: waveFloat3 10s ease-in-out infinite;
+  opacity: 0.3;
+}
+
+/* ================= WAVE FLOATING KEYFRAMES ================= */
+@keyframes waveFloat1 {
   0% { transform: translateY(0); }
   50% { transform: translateY(15px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes waveFloat2 {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes waveFloat3 {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(5px); }
   100% { transform: translateY(0); }
 }
