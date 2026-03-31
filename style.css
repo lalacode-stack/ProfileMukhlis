@@ -1,196 +1,50 @@
-/* ================= RESET & BASE ================= */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', sans-serif;
-}
+/* RESET & BASE */
+* {margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI',sans-serif;}
+body {scroll-behavior:smooth; background:#000;}
 
-body {
-  scroll-behavior: smooth;
-  background: #000; /* fallback */
-}
+/* NAVBAR */
+nav {display:flex; justify-content:space-between; align-items:center; padding:20px 60px; background:rgba(0,0,0,0.7); position:fixed; width:100%; z-index:1000;}
+.logo {color:#00e0c6; font-size:22px; font-weight:bold;}
+nav ul {display:flex; gap:30px; list-style:none;}
+nav a {color:white; text-decoration:none; transition:.3s;}
+nav a:hover {color:#00e0c6;}
 
-/* ================= NAVBAR ================= */
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 60px;
-  background: rgba(0, 0, 0, 0.7);
-  position: fixed;
-  width: 100%;
-  z-index: 1000;
-}
+/* HOME */
+.home {height:100vh; background:linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1501785888041-af3ef285b470') no-repeat center/cover; display:flex; justify-content:center; align-items:center; background-attachment:fixed;}
+.overlay {text-align:center; color:white; max-width:800px;}
+.overlay h1 {font-size:38px; margin-bottom:10px; text-shadow:0 0 10px rgba(0,224,198,0.8);}
+.overlay p {margin-bottom:10px;}
+.tagline {color:#00e0c6; font-weight:bold;}
 
-.logo {
-  color: #00e0c6;
-  font-size: 22px;
-  font-weight: bold;
-}
+/* BUTTON */
+.btn {display:inline-block; margin-top:20px; padding:12px 25px; background:#00e0c6; color:black; text-decoration:none; border-radius:30px; transition:.3s; box-shadow:0 0 10px rgba(0,224,198,0.7);}
+.btn:hover {background:white;}
 
-nav ul {
-  display: flex;
-  gap: 30px;
-  list-style: none;
-}
+/* SECTIONS */
+.section {padding:100px 60px; text-align:center;}
 
-nav a {
-  color: white;
-  text-decoration: none;
-  transition: 0.3s;
-}
+/* CARDS */
+.cards {display:flex; justify-content:center; gap:25px; flex-wrap:wrap; margin-top:30px;}
+.card {background:white; width:260px; padding:25px; border-radius:20px; box-shadow:0 10px 25px rgba(0,0,0,0.1); transition:.4s;}
+.card:hover {transform:translateY(-12px) scale(1.05); box-shadow:0 15px 40px rgba(0,0,0,0.2);}
 
-nav a:hover {
-  color: #00e0c6;
-}
+/* CONTACT */
+.contact {background:#f4f4f4;}
 
-/* ================= HOME ================= */
-.home {
-  height: 100vh;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.7)),
-              url('https://images.unsplash.com/photo-1501785888041-af3ef285b470') no-repeat center/cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-attachment: fixed; /* PARALLAX */
-}
+/* FOOTER */
+footer {background:#111; color:white; padding:15px; text-align:center;}
 
-.overlay {
-  text-align: center;
-  color: white;
-  max-width: 800px;
-}
+/* WAVE CONTAINER */
+.wave-container {position:relative; width:100%; margin-top:-5px; overflow:hidden; z-index:10;}
+.wave-container svg {position:absolute; bottom:0; left:0; width:100%; height:auto;}
+.wave-container svg path {filter: drop-shadow(0 0 10px rgba(0,224,198,0.3));}
 
-.overlay h1 {
-  font-size: 38px;
-  margin-bottom: 10px;
-  text-shadow: 0 0 10px rgba(0,224,198,0.8); /* GLOW */
-}
+/* MULTI-LAYER WAVE */
+.wave1 {animation:waveFloat1 6s ease-in-out infinite; opacity:1;}
+.wave2 {animation:waveFloat2 8s ease-in-out infinite; opacity:0.5;}
+.wave3 {animation:waveFloat3 10s ease-in-out infinite; opacity:0.3;}
 
-.overlay p {
-  margin-bottom: 10px;
-}
-
-.tagline {
-  color: #00e0c6;
-  font-weight: bold;
-}
-
-/* ================= BUTTON ================= */
-.btn {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 12px 25px;
-  background: #00e0c6;
-  color: black;
-  text-decoration: none;
-  border-radius: 30px;
-  transition: 0.3s;
-  box-shadow: 0 0 10px rgba(0,224,198,0.7); /* BUTTON GLOW */
-}
-
-.btn:hover {
-  background: white;
-}
-
-/* ================= SECTIONS ================= */
-.section {
-  padding: 100px 60px;
-  text-align: center;
-}
-
-/* ================= CARDS ================= */
-.cards {
-  display: flex;
-  justify-content: center;
-  gap: 25px;
-  flex-wrap: wrap;
-  margin-top: 30px;
-}
-
-.card {
-  background: white;
-  width: 260px;
-  padding: 25px;
-  border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-  transition: 0.4s;
-}
-
-.card:hover {
-  transform: translateY(-12px) scale(1.05);
-  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-}
-
-/* ================= CONTACT ================= */
-.contact {
-  background: #f4f4f4;
-}
-
-/* ================= FOOTER ================= */
-footer {
-  background: #111;
-  color: white;
-  padding: 15px;
-  text-align: center;
-}
-
-/* ================= WAVE CONTAINER ================= */
-.wave-container {
-  position: relative;
-  width: 100%;
-  margin-top: -5px;
-  overflow: hidden;
-  z-index: 10;
-}
-
-/* ================= MULTI-LAYER WAVE ================= */
-.wave-container svg {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: auto;
-}
-
-.wave-container svg path {
-  filter: drop-shadow(0 0 10px rgba(0,224,198,0.3));
-}
-
-/* Layer 1 */
-.wave1 {
-  animation: waveFloat1 6s ease-in-out infinite;
-  opacity: 1;
-}
-
-/* Layer 2 */
-.wave2 {
-  animation: waveFloat2 8s ease-in-out infinite;
-  opacity: 0.5;
-}
-
-/* Layer 3 */
-.wave3 {
-  animation: waveFloat3 10s ease-in-out infinite;
-  opacity: 0.3;
-}
-
-/* ================= WAVE FLOATING KEYFRAMES ================= */
-@keyframes waveFloat1 {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(15px); }
-  100% { transform: translateY(0); }
-}
-
-@keyframes waveFloat2 {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(10px); }
-  100% { transform: translateY(0); }
-}
-
-@keyframes waveFloat3 {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(5px); }
-  100% { transform: translateY(0); }
-}
+/* WAVE FLOAT ANIMATIONS */
+@keyframes waveFloat1 {0%{transform:translateY(0)}50%{transform:translateY(15px)}100%{transform:translateY(0)}}
+@keyframes waveFloat2 {0%{transform:translateY(0)}50%{transform:translateY(10px)}100%{transform:translateY(0)}}
+@keyframes waveFloat3 {0%{transform:translateY(0)}50%{transform:translateY(5px)}100%{transform:translateY(0)}}
