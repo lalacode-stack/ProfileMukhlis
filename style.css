@@ -1,189 +1,104 @@
-/* RESET & BASE */
+/* RESET & BASE (tambahkan fallback warna yang lebih hidup) */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Segoe UI', system-ui, -apple-system, Roboto, Arial, sans-serif;
 }
-html, body {
-  height: 100%;
-}
+html, body { height: 100%; }
 body {
   scroll-behavior: smooth;
-  background: #000;
-  color: #fff; /* baseline teks putih untuk kontras, bisa disesuaikan di elemen lain */
+  /* Ganti background putih/gelap dengan nuansa warna lebar */
+  background: linear-gradient(135deg, #0e0f14 0%, #111319 60%, #1a1a1f 100%);
+  color: #fff;
 }
 
-/* NAVBAR */
+/* NAVBAR tetap terlihat dengan gaya baru */
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 60px;
-  background: rgba(0, 0, 0, 0.7);
+  padding: 14px 40px;
+  background: rgba(0,0,0,0.65);
   position: fixed;
   width: 100%;
   z-index: 1000;
   top: 0;
   left: 0;
+  backdrop-filter: saturate(120%) blur(2px);
 }
-.logo {
-  color: #00e0c6;
-  font-size: 22px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-}
-nav ul {
-  display: flex;
-  gap: 30px;
-  list-style: none;
-}
-nav a {
-  color: #fff;
-  text-decoration: none;
-  transition: color 0.3s;
-}
-nav a:hover {
-  color: #00e0c6;
-}
-@media (max-width: 768px) {
-  nav { padding: 14px 20px; }
-  nav ul { gap: 16px; }
-}
+.logo { color: #00e0c6; font-size: 22px; font-weight: 700; }
 
-/* HOME */
+/* Nav link tetap putih, hover tetap kontras */
+nav ul { display:flex; gap:28px; list-style:none; }
+nav a { color:#fff; text-decoration:none; transition: color .3s; }
+nav a:hover { color:#00e0c6; }
+
+/* HOME: background image + blur overlay */
 .home {
   height: 100vh;
-  background: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.6),
-      rgba(0, 0, 0, 0.7)
-    ),
-    url('https://images.unsplash.com/photo-1501785888041-af3ef285b470') no-repeat center/cover;
+  /* gambar latar bisa lebih hidup */
+  background-image: url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1400&q=60');
+  background-size: cover;
+  background-position: center;
+  position: relative;
   display: flex;
-  justify-content: center;
   align-items: center;
-  background-attachment: fixed;
+  justify-content: center;
+  /* gunakan overlay blur agar konten tetap jelas */
+}
+.home::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* blur/background layer warna untuk vibe yang lebih halus */
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(3px);
 }
 .overlay {
+  position: relative;
   text-align: center;
   color: white;
   max-width: 800px;
-  padding: 0 16px;
+  padding: 0 20px;
 }
-.overlay h1 {
-  font-size: 38px;
-  margin-bottom: 10px;
-  text-shadow: 0 0 10px rgba(0, 224, 198, 0.8);
-}
-.overlay p {
-  margin-bottom: 10px;
-}
-.tagline {
-  color: #00e0c6;
-  font-weight: 700;
-}
+.overlay h1 { font-size: 40px; margin-bottom: 10px; text-shadow: 0 0 12px rgba(0,255,230,0.8); }
+.overlay p { margin-bottom: 10px; font-size: 16px; opacity: 0.95; }
+.tagline { color:#00e0c6; font-weight:700; }
 
 /* BUTTON */
 .btn {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 12px 25px;
-  background: #00e0c6;
-  color: #000;
-  text-decoration: none;
-  border-radius: 30px;
-  transition: transform 0.3s ease, background 0.3s ease;
-  box-shadow: 0 0 10px rgba(0, 224, 198, 0.7);
+  display:inline-block;
+  padding:12px 25px;
+  border-radius:28px;
+  text-decoration:none;
+  background:#00e0c6;
+  color:#000;
+  margin-top:20px;
+  box-shadow:0 6px 14px rgba(0,224,198,.6);
+  transition: transform .25s ease, background .25s ease;
 }
-.btn:hover {
-  background: #eafff7;
-  transform: translateY(-1px);
-}
-@media (max-width: 600px) {
-  .overlay h1 { font-size: 28px; }
-  .btn { width: auto; padding: 12px 20px; }
-}
+.btn:hover { transform: translateY(-1px); background:#e6fffb; }
 
-/* SECTIONS */
-.section {
-  padding: 100px 60px;
-  text-align: center;
-}
+/* WAVE/Hiasan di bawah home (opsional) */
+.wave-container { display:none; } /* nonaktif kalau tidak dipakai */
+
+/* SECTIONS (tetap seperti sebelumnya) */
+.section { padding:100px 60px; text-align:center; }
 
 /* CARDS */
-.cards {
-  display: flex;
-  justify-content: center;
-  gap: 25px;
-  flex-wrap: wrap;
-  margin-top: 30px;
-}
-.card {
-  background: #fff;
-  color: #000;
-  width: 260px;
-  padding: 25px;
-  border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-.card:hover {
-  transform: translateY(-12px) scale(1.05);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-}
-.card h3 {
-  margin-bottom: 8px;
-}
-.card p {
-  color: #333;
-}
-@media (max-width: 700px) {
-  .card { width: 90%; }
-}
+.cards { display:flex; justify-content:center; gap:25px; flex-wrap:wrap; margin-top:30px; }
+.card { background:white; color:#000; width:260px; padding:25px; border-radius:20px; box-shadow:0 10px 25px rgba(0,0,0,.1); transition:.4s; }
+.card:hover { transform: translateY(-12px) scale(1.03); box-shadow:0 15px 40px rgba(0,0,0,.2); }
 
 /* CONTACT */
-.contact {
-  background: #f4f4f4;
-  color: #111;
-}
-.contact a { color: inherit; }
+.contact { background:#f4f4f4; color:#111; }
 
 /* FOOTER */
-footer {
-  background: #111;
-  color: white;
-  padding: 15px;
-  text-align: center;
-}
+footer { background:#111; color:white; padding:15px; text-align:center; }
 
-/* WAVE CONTAINER */
-.wave-container {
-  position: relative;
-  width: 100%;
-  margin-top: -5px;
-  overflow: hidden;
-  z-index: 10;
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .overlay h1 { font-size: 32px; }
+  nav { padding: 12px 20px; }
 }
-.wave-container svg {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: auto;
-}
-.wave-container svg path {
-  filter: drop-shadow(0 0 10px rgba(0, 224, 198, 0.3));
-  fill: currentColor;
-  /* Pastikan warna path sesuai layer jika menggunakan multiple warna */
-}
-
-/* MULTI-LAYER WAVE */
-.wave1 { animation: waveFloat1 6s ease-in-out infinite; opacity: 1; }
-.wave2 { animation: waveFloat2 8s ease-in-out infinite; opacity: 0.5; }
-.wave3 { animation: waveFloat3 10s ease-in-out infinite; opacity: 0.3; }
-
-/* WAVE FLOAT ANIMATIONS */
-@keyframes waveFloat1 { 0% { transform: translateY(0); } 50% { transform: translateY(15px); } 100% { transform: translateY(0); } }
-@keyframes waveFloat2 { 0% { transform: translateY(0); } 50% { transform: translateY(10px); } 100% { transform: translateY(0); } }
-@keyframes waveFloat3 { 0% { transform: translateY(0); } 50% { transform: translateY(5px); } 100% { transform: translateY(0); } }
