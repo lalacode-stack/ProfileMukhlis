@@ -75,25 +75,25 @@ nav a:hover {
 
 /* BUTTON */
 .btn {
-    display: inline-block;
-    width: 180px;           /* saiz kotak */
-    height: 120px;
-    margin: 15px;
-    padding: 20px;
-    
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 120px;
+    height: 120px;   /* sama dengan width → jadi petak */
+
     background: #00e0c6;
     color: black;
     text-decoration: none;
 
-    border-radius: 12px;    /* sikit rounded */
-    box-shadow: 0 6px 10px rgba(0,0,0,0.2);
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    border-radius: 10px;
+    box-shadow: 0 6px 10px rgba(0,0,0,0.3);
 
     font-weight: bold;
+    text-align: center;
+
     transition: 0.3s;
+    margin-top: 20px;
 }
 .btn:hover {
     background: white;
